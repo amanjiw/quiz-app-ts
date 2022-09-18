@@ -6,7 +6,7 @@ import {
   Question,
 } from "./API";
 import QuestionCard from "./components/QuestionCard";
-import { GlobalStyle } from "./App.styles";
+import { GlobalStyle, Wrapper } from "./App.styles";
 
 export type AnswerObject = {
   question: string;
@@ -80,7 +80,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle />{" "}
-      <div className="App">
+      <Wrapper className="App">
         <h1>Quiz App</h1>
         {(gameOver || userAnswers.length === TOTA_QUESTIONS) && (
           <button className="start" onClick={startTrivial}>
@@ -107,7 +107,7 @@ const App = () => {
               Next Question
             </button>
           )}
-      </div>
+      </Wrapper>
     </>
   );
 };
