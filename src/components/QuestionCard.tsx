@@ -1,12 +1,14 @@
 import React from "react";
 
+import { AnswerObject } from "../App";
+
 // ## =>
 
 type Prp = {
   question: string;
   answers: string[];
-  callback: any;
-  userAnswer: any;
+  callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  userAnswer: AnswerObject | undefined;
   qusetionsNr: number;
   totalQuestions: number;
 };
@@ -27,9 +29,10 @@ const QuestionCard: React.FC<Prp> = ({
       <p dangerouslySetInnerHTML={{ __html: question }} />
       <div className="">
         {answers.map((answer) => (
-          <div className="">
-            <button disabled={userAnswer} onClick={callback}></button>
-            <span dangerouslySetInnerHTML={{ __html: answer }} />
+          <div key={answer} className="">
+            <button disabled={!!userAnswer} value={answer} onClick={callback}>
+              <span dangerouslySetInnerHTML={{ __html: answer }} />
+            </button>
           </div>
         ))}
       </div>
